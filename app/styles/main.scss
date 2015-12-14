@@ -1,93 +1,236 @@
-$icon-font-path: '../fonts/';
-
 // bower:scss
-@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import 'bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 // endbower
 
-.browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+// CONTAINER --------
+.container{
+  margin: 0 auto;
+  width: 1100px;
 }
 
-/* Space out content a bit */
-body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+.main{
+  display: inline-block;
+  vertical-align: top;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+// __________________________/ CONTENT \
+//                           \ BLOCK   /
+
+#mainBlock{
+  padding: 0px;
+  width: 800px;
+  margin-top: 20px;
+}
+// inputBlock and include content (input) -------------------------INPUT_INPUT
+#inputBlock{
+  width: inherit;
+  position: relative;
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
+#inputBlock div{
+  display: inline-block;
+  vertical-align: top;
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+#inputSongBlock{
+  width: 580px;
+  height: 60px;
 }
 
-.container-narrow > hr {
-  margin: 30px 0;
+#inputSongBlock input{
+  display: inline-block;
+  width: 170px;
+  margin-left: 12px;
+  margin-top: 15px;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
+#inputBlockButtons{
+  position: relative;
+  width: 200px;
+  height: 60px;
+  margin-left: 10px;
+}
+
+// inputBlock and include content (buttons) -------------------------INPUT_BUTTONS
+#inputBlockButtons button{
+  position: absolute;
+  width: 90px;
+  height: 40px;
+  margin-top: 10px;
+  outline: none;
+}
+
+#delAllBut{
+  margin-left: 100px;
+}
+
+// filterBlock and include content (filter input) -------------------------FILTER_INPUT
+
+#filterBlock{
+  width: inherit;
+  height: 60px;
+}
+
+#filterBlock div{
+  display: inline-block;
+  vertical-align: top;
+}
+
+#inputFilterBlock{
+  width: 580px;
+  height: 60px;
+}
+
+#inputFilterBlock input{
+  display: inline-block;
+  margin-left: 12px;
+  margin-top: 15px;
+  width: 170px;
+}
+
+// filterBlock and include content (buttons) -------------------------FILTER_BUTTON
+
+#filterBlockBut{
+  position: relative;
+}
+
+#filterBlockBut button{
+  position: absolute;
+  width: 90px;
+  height: 40px;
+  margin-top: 10px;
+  outline: none;
+}
+
+#filterBut{
+  margin-left: 10px;
+}
+
+#resetBut{
+  margin-left: 110px;
+}
+
+// listBlock and include content (title block) --------------------------LIST_TITLE
+
+#listBlock{
+  width: inherit;
+  min-height: 83px;
+}
+
+.listTitleBlock{
+  border-bottom: 1px solid gray;
+  width: inherit;
+  height: 40px;
+  margin-top: 5px;
+}
+
+.listTitleBlock p{
+  display: inline-block;
+  width: 248px;
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+  font-size: 20px;
+}
+
+// listBlock and include content (content block) --------------------------LIST_CONTENT
+.listContentBlock{
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.listContentBlock td{
+  text-align: center;
+  font-size: 18px;
+  color: #555555;
+}
+
+.view{
+  width: 165px;
+}
+
+.listContentBlock .destroy, .listContentBlock .destroy button{
+  width: 33px;
+}
+
+.destroy{
+  width: 30px;
+  font-size: 20px;
+  opacity: 0.5;
+  cursor: pointer;
+  &:hover{
+    opacity: 1;
+    color: #6A140B;
   }
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-  p + h4 {
-    margin-top: 28px;
-  }
+
+.filtered{
+  display: none;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+.edit{
+  display: none;
+}
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
+.editing .edit{
+  display: block;
+  width: 230px;
+  height: 25px;
+  border-color: gray;
+  box-shadow: none;
+}
 
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
+.editing div{
+  display: none;
+}
 
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+.table{
+  margin-bottom: 0px;
+}
+
+//alert blocks ------------------ALERT
+
+#inputBlock #alertWarn{
+  display: none;
+  position: absolute;
+  left: 378px;
+  top: 4px;
+  width: 200px;
+}
+
+.WarningMes{
+  padding-left: 6px;
+}
+
+#filterBlockBut #alertFilter{
+  position: absolute;
+  left: -14px;
+  margin-top: 12px;
+  font-size: 20px;
+  width: 17px;
+  padding: 5px;
+  height: 37px;
+}
+
+// __________________________/ ROUTE   \
+//                           \ BLOCK   /
+
+#routeModule{
+  width: 230px;
+  padding: 0px;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+#routeModule p{
+  padding-left: 15px;
+  padding-top: 7px;
+}
+
+.routeMessage{
+  display: block;
+}
+
+.routeElement{
+  position: relative;
+  display: none;
 }

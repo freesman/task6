@@ -1,16 +1,61 @@
 extends layouts/default
 
 block content
-  .row.marketing
-    .col-lg-6
-      h4 HTML5 Boilerplate
-      p HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
+  #mainBlock.main.jumbotron
+    #inputBlock
+      #alertWarn.alert.alert-warning.fade
+        a.close(href = '#' arial-label = 'close') &times;
+        strong Warning!
+        span.WarningMes mytext
+      #inputSongBlock
+        input#songTitle.form-control(placeholder = 'add song title')
+        input#songAuthor.form-control(placeholder = 'add song author')
+        input#songGenre.form-control(placeholder = 'add song genre')
+      #inputBlockButtons
+        button#addBut.btn.btn-primary add song
+        button#delAllBut.btn.btn-danger clear list
+    #filterBlock
+      #inputFilterBlock
+        input#titleFilter.form-control(placeholder = 'title filter')
+        input#authorFilter.form-control(placeholder = 'author filter')
+        input#genreFilter.form-control(placeholder = 'genre filter')
+      #filterBlockBut
+        #alertFilter.alert.alert-warning.fade
+          strong !
+        button#filterBut.btn.btn-primary filter
+        button#resetBut.btn.btn-warning reset
+    #listBlock
+      .listTitleBlock
+        p title
+        p author
+        p genre
 
-      h4 Sass
-      p Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.
+      table.listContentBlock.table.table-striped.table-bordered
+        tbody.table.table-striped
 
-      h4 Bootstrap
-      p Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.
+  #routeModule.main.jumbotron
+    .routeElement
+      .num
+        p #id
+      p#routeTitle title:
+      p#routeAuthor author:
+      p#routeGenre genre:
+    .routeMessage
+      p
 
-      h4 Modernizr
-      p Modernizr is an open-source JavaScript library that helps you build the next generation of HTML5 and CSS3-powered websites.
+  script(type = 'text/template', id = 'item-template').
+    <td class = 'view'>
+      <div><%- title %></div>
+      <input class='edit title form-control' data-id='title' value='<%- title %>'></input>
+    </td>
+    <td class = 'view'>
+      <div><%- author %></div>
+      <input class='edit author form-control' data-id='author' value='<%- author %>'></input>
+    </td>
+    <td class = 'view'>
+      <div><%- genre %></div>
+      <input class='edit genre form-control' data-id='genre' value='<%- genre %>'></input>
+    </td>
+    <td class = 'destroy'>&times;</td>
+
+
