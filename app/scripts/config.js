@@ -22,7 +22,10 @@ require.config({
 });
 
 require(
-  ['backbone'],
-  function(Backbone){
+  ['backbone', 'views/appView', 'routers/listRouter'],
+  function(Backbone, AppView, Workspace){
+    new Workspace();
+    Backbone.history.start();
+    new AppView();
   }
 );

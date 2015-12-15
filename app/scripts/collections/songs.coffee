@@ -12,5 +12,5 @@ define(
       filtered: ->
         return this.where(filtered: true)
     )
-    return new SongsCollection() #()?
+    return new SongsCollection()
 )

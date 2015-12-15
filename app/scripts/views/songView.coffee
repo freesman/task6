@@ -1,9 +1,9 @@
 define(
-  ['jquery', 'underscore', 'backbone', 'text!templates/song.html', 'common']
-  ($, _, Backbone, *?, Common?) ->
+  ['jquery', 'underscore', 'backbone', 'text!templates/song.html', 'collections/songs', 'common']
+  ($, _, Backbone, songTemplate, SongsCollection, Common) ->
     ItemView = Backbone.View.extend(
       tagName: 'tr'
-      template: _.template($('#item-template').html())
+      template: _.template(songTemplate)
       events:
         'dblclick .view': 'edit'
         'keypress .editing .edit': 'updateOnEnter'
@@ -27,6 +27,7 @@ define(
         this.$el.toggleClass('filtered', true)
       clear: ->
         this.model.destroy()
+        Backbone.history.loadUrl(Backbone.history.getFragment())
       toggleFiltered: ->
         this.model.toggle()
       checkItem: (title, author, genre) ->
@@ -57,10 +58,10 @@ define(
         $(e.currentTarget).addClass('editing')
         this.$myInput.focus()
       updateOnEnter: (e)->
-        if e.which == ENTER_KEY
+        if e.which == Common.ENTER_KEY
           this.close()
       revertOnEscape: (e)->
-        if e.which == ESC_KEY
+        if e.which == Common.ESC_KEY
           this.$myTd.removeClass('editing')
       close: ->
         value = this.$myInput.val()
@@ -70,12 +71,13 @@ define(
           Backbone.history.loadUrl(Backbone.history.getFragment()) # refresh route cur item after editing
         this.$myTd.removeClass('editing')
       routeItem: -> # route to item on click some attribute in list
-        songMass = songList.toArray()
+        songMass = SongsCollection.toArray()
         id = 0
         while songMass[id].cid != this.model.cid
           id++
         id++
-        webListRouter.navigate('items/' + id, true)
+        Backbone.history.navigate('items/' + id, true)
+        Backbone.history.loadUrl(Backbone.history.getFragment())
     )
-  return ItemView
+    return ItemView
 )
