@@ -44,6 +44,7 @@ define(
           this.$inputSong.val('')
           this.$inputAuthor.val('')
           this.$inputGenre.val('')
+          Backbone.history.loadUrl(Backbone.history.getFragment())
       clearList: ->
         _.invoke(SongsCollection.toArray(), 'destroy')
         this.routeReset()

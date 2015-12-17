@@ -24,8 +24,8 @@ require.config({
 require(
   ['backbone', 'views/appView', 'routers/listRouter'],
   function(Backbone, AppView, Workspace){
+    new AppView();
     new Workspace();
     Backbone.history.start();
-    new AppView();
   }
 );

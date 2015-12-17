@@ -13,6 +13,9 @@ define(
         $('.routeMessage p').text('choose your elemet: \'../#/items/?\'')
         SongsCollection.trigger('filterReset')
       items: (id) ->
+        #this.refresh(true)
+        console.log(this)
+        console.log(SongsCollection)
         if id < 1 or id > SongsCollection.length
           this.routeError(id)
           return false
