@@ -16,8 +16,6 @@
       },
       items: function(id) {
         var author, genre, idMass, songMass, title;
-        console.log(this);
-        console.log(SongsCollection);
         if (id < 1 || id > SongsCollection.length) {
           this.routeError(id);
           return false;
