@@ -13353,7 +13353,7 @@ define('text',['module'], function (module) {
 });
 
 
-define('text!templates/song.html',[],function () { return '<td class = \'view\'>\n  <div><%- title %></div>\n  <input class=\'edit title form-control\' data-id=\'title\' value=\'<%- title %>\'></input>\n</td>\n<td class = \'view\'>\n  <div><%- author %></div>\n  <input class=\'edit author form-control\' data-id=\'author\' value=\'<%- author %>\'></input>\n</td>\n<td class = \'view\'>\n  <div><%- genre %></div>\n  <input class=\'edit genre form-control\' data-id=\'genre\' value=\'<%- genre %>\'></input>\n</td>\n<td class = \'destroy\'>&times;</td>';});
+define('text!templates/song.html',[],function () { return '\n<td class="view">\n  <div><%- title %></div><input class=\'edit title form-control\' data-id=\'title\' value=\'<%- title %>\'></input>\n</td>\n<td class="view">\n  <div><%- author %></div><input class=\'edit author form-control\' data-id=\'author\' value=\'<%- author %>\'></input>\n</td>\n<td class="view">\n  <div><%- genre %></div><input class=\'edit genre form-control\' data-id=\'genre\' value=\'<%- genre %>\'></input>\n</td>\n<td class="destroy">&times;</td>';});
 
 (function() {
   define('common',[], function() {
@@ -13465,8 +13465,6 @@ define('text!templates/song.html',[],function () { return '<td class = \'view\'>
         var id, songMass;
         songMass = SongsCollection.toArray();
         id = 0;
-        console.log(songMass);
-        console.log(this.model.cid);
         while (songMass[id].cid !== this.model.cid) {
           id++;
         }
@@ -13640,7 +13638,7 @@ define('text!templates/song.html',[],function () { return '<td class = \'view\'>
       },
       index: function() {
         this.routeIndex(true);
-        $('.routeMessage p').text('choose your elemet: \'../#/items/?\'');
+        $('.routeMessage p').text('choose your elemet: \'../#items/?\'');
         return SongsCollection.trigger('filterReset');
       },
       items: function(id) {
@@ -13693,37 +13691,37 @@ define('text!templates/song.html',[],function () { return '<td class = \'view\'>
 
 }).call(this);
 
-require.config({
-  shim:{
-    underscore: {
-      exports:'_'
-    },
-    backbone:{
-      deps: ['underscore', 'jquery'],
-      exports: 'Backbone'
-    },
-    backboneLocalstorage: {
+(function() {
+  require.config({
+    shim: {
+      underscore: {
+        exports: '_'
+      },
+      backbone: {
+        deps: ['underscore', 'jquery'],
+        exports: 'Backbone'
+      },
+      backboneLocalstorage: {
         deps: ['backbone'],
         exports: 'Store'
+      }
+    },
+    paths: {
+      jquery: '../../bower_components/jquery/dist/jquery',
+      underscore: '../../bower_components/underscore/underscore',
+      backbone: '../../bower_components/backbone/backbone',
+      backboneLocalstorage: '../../bower_components/backbone.localStorage/backbone.localStorage',
+      text: '../../bower_components/text/text'
     }
-  },
-  paths: {
-    jquery: '../../bower_components/jquery/dist/jquery',
-    underscore: '../../bower_components/underscore/underscore',
-    backbone: '../../bower_components/backbone/backbone',
-    backboneLocalstorage: '../../bower_components/backbone.localStorage/backbone.localStorage',
-    text: '../../bower_components/text/text'
-  }
-});
+  });
 
-require(
-  ['backbone', 'views/appView', 'routers/listRouter'],
-  function(Backbone, AppView, Workspace){
+  require(['backbone', 'views/appView', 'routers/listRouter'], function(Backbone, AppView, Workspace) {
     new AppView();
     new Workspace();
-    Backbone.history.start();
-  }
-);
+    return Backbone.history.start();
+  });
+
+}).call(this);
 
 define("main", function(){});
 
