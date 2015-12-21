@@ -21,8 +21,10 @@ html.no-js
 
       block content
 
-    //script(src='../bower_components/jquery/dist/jquery.js')
-    //script(src='../bower_components/underscore/underscore.js')
-    //script(src='../bower_components/backbone/backbone.js')
-    //script(src='../bower_components/backbone.localStorage/backbone.localStorage.js')
-    script(data-main='scripts/config' src='../bower_components/requirejs/require.js')
+    //build:modernizr
+    script(src='../bower_components/modernizr/modernizr.js')
+    //endbuild
+
+    //build:require
+    script(data-main='scripts/main' src='../bower_components/requirejs/require.js')
+    //endbuild

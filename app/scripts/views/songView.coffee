@@ -73,8 +73,6 @@ define(
       routeItem: -> # route to item on click some attribute in list
         songMass = SongsCollection.toArray()
         id = 0
-        console.log(songMass)
-        console.log(this.model.cid)
         while songMass[id].cid != this.model.cid
           id++
         id++
