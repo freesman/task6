@@ -160,7 +160,7 @@ gulp.task('default', ['clean'], () => {
   gulp.start('build-modules');
 });
 
-gulp.task('build-modules', ['html', 'bower', 'images', 'fonts', 'extras'], () => {
+gulp.task('build-modules', ['html', 'bower', 'bower:path', 'images', 'fonts', 'extras'], () => {
   gulp.start('build-size');
 });
 
